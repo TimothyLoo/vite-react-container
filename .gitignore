@@ -1,0 +1,14 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+
+# IDE files
+.idea/
+.vscode/
+
+# Miscellaneous files
+.DS_Store
+Thumbs.db
+package-lock.json
