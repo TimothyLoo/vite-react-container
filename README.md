@@ -13,3 +13,16 @@ choose TypeScript
 create Dockerfile
 
 update vite.config.ts to include server config
+
+### Create Docker Container
+create a docker-compose.yml file
+define build in yml file
+
+alternatively, use following commands:
+`docker build -t my-vite .`
+`docker run -p 3000:3000 my-vite`
+
+### Run Docker
+make sure your terminal profile allows docker executables
+
+run `docker-compose up`
