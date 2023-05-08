@@ -1,4 +1,4 @@
-# Create mysql database container
+## Create mysql database container
 FROM mysql:latest
 
 ENV MYSQL_ROOT_PASSWORD=password
