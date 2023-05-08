@@ -26,3 +26,6 @@ alternatively, use following commands:
 make sure your terminal profile allows docker executables
 
 run `docker-compose up`
+
+if you can't connect to the mysql docker database, you may have a db_data already in docker
+run `docker-compose down -v`
