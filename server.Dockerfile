@@ -12,7 +12,10 @@ COPY package*.json ./
 RUN npm install
 
 # Copy the rest of the application code to the container
-COPY index.ts index.ts
+# COPY . .
+COPY server.ts server.ts
+COPY tsconfig.json tsconfig.json
+COPY tsconfig.node.json tsconfig.node.json
 
 # Build the production version of the application
 # RUN npm run build

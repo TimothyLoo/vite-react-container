@@ -8,8 +8,11 @@ services:
     build:
       context: .
       dockerfile: client.Dockerfile
-    # environment:
-      # - NODE_ENV=development
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - .:/app
+      - /app/node_modules
     networks:
       - pine
     ports:
@@ -40,6 +43,9 @@ services:
     build:
       context: .
       dockerfile: server.Dockerfile
+    volumes:
+      - .:/app
+      - /app/node_modules
     networks:
       - pine
     ports:
