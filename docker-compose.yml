@@ -1,22 +1,23 @@
-version: '3'
+version: '3.8'
 
 services:
 # vite/react application container
-  app:
+  client:
+    container_name: vite
+    image: react
     build:
       context: .
-      dockerfile: Dockerfile
-    volumes:
-      - .:/app
-      - /app/node_modules
-    environment:
-      - NODE_ENV=development
+      dockerfile: client.Dockerfile
+    # environment:
+      # - NODE_ENV=development
+    networks:
+      - pine
     ports:
       - '3000:3000'
-    command: npm run dev
 
 # database container
   db:
+    container_name: database
     image: mysql:latest
     restart: always
     environment:
@@ -24,11 +25,29 @@ services:
       MYSQL_USER: tj
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password
+    networks:
+      - pine
     ports:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
       - ./database/sql:/docker-entrypoint-initdb.d
 
+# expressServer container
+  server:
+    image: express
+    container_name: server
+    build:
+      context: .
+      dockerfile: server.Dockerfile
+    networks:
+      - pine
+    ports:
+      - '3001:3001'
+
 volumes:
   db_data:
+
+networks:
+  pine:
+    driver: bridge
