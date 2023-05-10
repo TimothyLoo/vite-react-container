@@ -1,10 +1,13 @@
 import mysql, { Connection } from 'mysql2';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const connection: Connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'tj',
-    password: 'tj_password',
-    database: 'tj_database',
+    host: 'database', // match docker container name
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
 });
 
 connection.connect((err) => {
@@ -15,3 +18,5 @@ connection.connect((err) => {
 
     console.log('Connected to MySQL as id', connection.threadId);
 });
+
+export default connection;

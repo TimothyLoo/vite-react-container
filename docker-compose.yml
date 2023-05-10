@@ -50,6 +50,10 @@ services:
       - pine
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
+    depends_on:
+      - db
+        # condition: service_healthy
+    restart: always
 
 volumes:
   db_data:

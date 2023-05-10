@@ -8,9 +8,8 @@ export default function Form() {
     event.preventDefault();
     const form: HTMLFormElement = event.target as HTMLFormElement;
     const surfSpotInput = form.elements.namedItem('surfSpotName') as HTMLInputElement;
-    console.log(surfSpotInput.value);
-    axios.get('/api/add')//{name: surfSpotInput.value})
-    .then((result)=>console.log(result))
+    axios.post('/api/add', {name: surfSpotInput.value})
+    .then(({data})=>console.log(data))
     .catch((error)=>console.log(error));
   }
 
