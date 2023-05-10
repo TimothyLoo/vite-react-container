@@ -21,7 +21,7 @@ COPY tsconfig.node.json tsconfig.node.json
 # RUN npm run build
 
 # Expose the port that the server listens on
-EXPOSE 3001
+EXPOSE ${SERVER_PORT}
 
 # Start the application
 CMD ["npm", "run", "server"]

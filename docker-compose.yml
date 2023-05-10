@@ -16,7 +16,7 @@ services:
     networks:
       - pine
     ports:
-      - '3000:3000'
+      - ${CLIENT_PORT}:${CLIENT_PORT}
 
 # database container
   db:
@@ -24,14 +24,14 @@ services:
     image: mysql:latest
     restart: always
     environment:
-      MYSQL_DATABASE: tj_database
-      MYSQL_USER: tj
-      MYSQL_PASSWORD: password
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
     networks:
       - pine
     ports:
-      - "3306:3306"
+      - ${DB_PORT}:${DB_PORT}
     volumes:
       - db_data:/var/lib/mysql
       - ./database/sql:/docker-entrypoint-initdb.d
@@ -49,7 +49,7 @@ services:
     networks:
       - pine
     ports:
-      - '3001:3001'
+      - ${SERVER_PORT}:${SERVER_PORT}
 
 volumes:
   db_data:

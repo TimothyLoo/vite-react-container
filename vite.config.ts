@@ -1,5 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import dotenv from 'dotenv'
+
+dotenv.config();
+
+const port: number = parseInt(process.env.CLIENT_PORT) || 3002;
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -7,9 +12,9 @@ export default defineConfig({
   server: {
     host: true,
     strictPort: true,
-    port: 3000,
+    port: port,
     proxy: {
-      '/api': 'http://server:3001', // have to use the container name
+      '/api': `http://server:${process.env.SERVER_PORT}`, // have to use the container name
     }
   }
 })
