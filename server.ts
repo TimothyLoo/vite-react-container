@@ -1,16 +1,9 @@
 import express from "express";
+import router from "./database/routes.js";
 
 const app = express();
 
-app.get('/api/hello', (req: express.Request, res: express.Response)=> {
-    console.log('RESPOND!');
-    res.send('sneeze World');
-})
-
-app.get('/api/bye', (req: express.Request, res: express.Response)=> {
-    console.log('RESPOND!');
-    res.send('Goodbye World');
-})
+app.use(router);
 
 const port: number = 3001;
 
