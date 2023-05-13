@@ -1,9 +1,9 @@
-import React from 'react';
 import renderer from 'react-test-renderer';
+import Form from '../src/Form';
 
-test('should render App component', () => {
-  const tree = renderer.create(<App />);
-  expect(tree).not.toBeNull();
-  tree.unmount();
-  tree.unstable_flushSync();
+describe('Test if Form Renders', () => {
+  it('renders correctly', () => {
+    const tree = renderer.create(Form());
+    expect(tree).not.toBeNull();
+  });
 });
