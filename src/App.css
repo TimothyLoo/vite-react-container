@@ -40,3 +40,13 @@
 .read-the-docs {
   color: #888;
 }
+
+.list {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.trash {
+  cursor: pointer;
+}
