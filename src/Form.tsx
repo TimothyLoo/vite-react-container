@@ -37,7 +37,7 @@ export default function Form() {
       <input type='text' placeholder='Input surf spot...' name='surfSpotName'/>
       <input type='submit' />
     </form>
-    <List spots={spots} setSpots={setSpots} getSurfSpots={getSurfSpots}/>
+    <List spots={spots} getSurfSpots={getSurfSpots}/>
     </>
   )
 }

@@ -1,3 +1,5 @@
+// @ts-ignore
+import {useState} from 'react';
 import axios from 'axios';
 import './App.css'
 import { FaTrash } from 'react-icons/fa';
@@ -5,11 +7,10 @@ import { SurfSpot } from './types';
 
 interface ListProps {
   spots: SurfSpot[]
-  setSpots: React.Dispatch<React.SetStateAction<SurfSpot[]>>
   getSurfSpots: VoidFunction
 }
 
-export default function List ({spots, setSpots, getSurfSpots}: ListProps) {
+export default function List ({spots, getSurfSpots}: ListProps) {
 
   const deleteSurfSpots = (id: number): void => {
     axios.delete(`/api/delete/${id}`)
