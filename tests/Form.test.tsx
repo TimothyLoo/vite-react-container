@@ -7,5 +7,6 @@ describe('Test if Form Renders', () => {
   it('renders correctly', () => {
     const tree = renderer.create(<Form />);
     expect(tree).not.toBeNull();
+    tree.unmount();
   });
 });

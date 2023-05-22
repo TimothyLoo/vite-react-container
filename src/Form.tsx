@@ -8,11 +8,19 @@ import { SurfSpot } from './types';
 export default function Form() {
 
   const [spots, setSpots] = useState<SurfSpot[]>([]);
+  const [error, setError] = useState('');
+
+  const displayError = (eMessage: string) => {
+    setError(eMessage);
+    setTimeout(()=>{
+      setError('');
+    }, 5000);
+  }
 
   const getSurfSpots = (): void => {
     axios.get('/api/get')
     .then(({data})=>setSpots(data))
-    .catch(error=>console.log(error));
+    .catch(({message})=>displayError(message));
   }
 
   const addSurfSpot = (event: FormEvent): void => {
@@ -24,7 +32,7 @@ export default function Form() {
       getSurfSpots();
       surfSpotInput.value = '';
     })
-    .catch((error)=>console.log(error));
+    .catch(({message})=>displayError(message));
   }
 
   useEffect(()=>{
@@ -38,6 +46,7 @@ export default function Form() {
       <input type='submit' />
     </form>
     <List spots={spots} getSurfSpots={getSurfSpots}/>
+    {error.length > 0 && <div>{error}</div>}
     </>
   )
 }
